@@ -756,6 +756,8 @@ namespace de4dot.code.renamer {
 				return null;
 			if (propMethod.Property != null)
 				return null;
+			if (propMethod.MethodDef.Parameters.Count != 0)
+				return null;
 
 			var sig = propMethod.MethodDef.MethodSig;
 			if (sig == null)
@@ -785,6 +787,8 @@ namespace de4dot.code.renamer {
 			if (!ownerType.HasModule)
 				return null;
 			if (propMethod.Property != null)
+				return null;
+			if (propMethod.MethodDef.Parameters.Count != 1 || propMethod.MethodDef.ReturnType.ElementType != ElementType.Void)
 				return null;
 
 			var sig = propMethod.MethodDef.MethodSig;
